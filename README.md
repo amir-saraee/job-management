@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Job Management Application
+
+## Overview
+
+This project is a job management application built with Next.js, featuring authentication and job listing functionalities. It uses JSON Server for mocking API endpoints and integrates with NextAuth for authentication.
+
+## Features
+
+- **Job Listings**: Display available job postings on the front page.
+
+- **Job Details**: View details of a specific job on a separate page.
+
+- **Authentication**: Users can log in to apply for jobs.
+
+- **Apply Now**: Display appropriate dialogs based on user authentication status.
+
+## Technologies Used
+
+- **Next.js**: Framework for building the application.
+
+- **Mantine**: Component library for UI elements.
+
+- **NextAuth**: Authentication solution.
+
+- **Axios**: For API requests.
+
+- **JSON Server**: Mocking backend API.
+
+- **TypeScript**: For type safety.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up and run the application locally:
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or later)
+
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+git  clone  https://github.com/amir-saraee/job-management.git
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+or
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 3. Set Up JSON Server
 
-## Learn More
+Create a file named `db.json` in the root directory with the following sample data:
+**`db.json`**
 
-To learn more about Next.js, take a look at the following resources:
+```json
+{ "jobs": [ { "id": 1, "company": "Company A", "title": "Software Engineer", "about": "Lorem ipsum dolor sit amet...", "address": "123 Elm St, Springfield, IL, 62701" }, { "id": 2, "company": "Company B", "title": "Product Manager", "about": "Lorem ipsum dolor sit amet...", "address": "456 Oak St, Springfield, IL, 62701" } // Add more job entries here ] }
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Run JSON Server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npx json-server --watch db.json --port 3004
+```
