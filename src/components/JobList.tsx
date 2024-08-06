@@ -15,6 +15,8 @@ const JobList = () => {
     try {
       const response = await axiosInstance.get("/jobs");
 
+      console.log({ response });
+
       setJobs(response.data);
       setIsLoading(false);
     } catch (err) {
