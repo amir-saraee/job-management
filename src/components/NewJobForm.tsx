@@ -15,7 +15,7 @@ const NewJobForm = () => {
     },
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: any) => {
     console.log(values);
   };
 
