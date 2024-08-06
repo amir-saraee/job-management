@@ -21,6 +21,10 @@ const SignIn = () => {
     if (result?.error) {
       console.error("Login error:", result.error);
     } else if (result?.ok) {
+      if (username.includes("employer")) {
+        router.push("/employer");
+        return;
+      }
       router.push("/");
     }
   };
