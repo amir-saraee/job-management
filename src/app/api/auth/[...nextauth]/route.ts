@@ -16,7 +16,6 @@ const handler = NextAuth({
   ],
   pages: {
     signIn: "/auth/signin",
-    error: "/auth/error", // Error code passed in query string as ?error=
   },
   session: {
     strategy: "jwt",
