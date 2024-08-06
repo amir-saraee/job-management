@@ -1,5 +1,3 @@
-// app/api/jobs/[id]/route.ts
-
 import { NextResponse } from "next/server";
 import path from "path";
 import { promises as fs } from "fs";
@@ -24,5 +22,7 @@ export async function GET(
     return NextResponse.json({ error: "Job not found" }, { status: 404 });
   }
 
-  return NextResponse.json(job);
+  return NextResponse.json(job, {
+    headers: { "Access-Control-Allow-Origin": "*" },
+  });
 }

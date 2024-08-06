@@ -1,21 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useSearchParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import {
-  Card,
-  Text,
-  Button,
-  Dialog,
-  Center,
-  Title,
-  Loader,
-} from "@mantine/core";
-import { Job } from "@/types";
+import { Card, Text, Button, Center, Title, Loader } from "@mantine/core";
+import { jobsData } from "@/utils/jobsData";
 import ApplyDialog from "@/components/ApplyDialog";
 import LoginDialog from "@/components/LoginDialog";
-import axiosInstance from "@/utils/axiosConfig";
+import { Job } from "@/types";
 
 const JobDetails: React.FC = () => {
   const pathname = usePathname();
@@ -26,12 +18,12 @@ const JobDetails: React.FC = () => {
 
   const id = pathname.split("/").pop();
 
-  const fetchJob = useCallback(async () => {
-    try {
-      const response = await axiosInstance.get<Job>(`/jobs/${id}`);
-      setJob(response.data);
-    } catch (err) {
-      console.log(err);
+  const fetchJob = useCallback(() => {
+    const job = jobsData.find((job) => job.id === Number(id));
+    if (job) {
+      setJob(job);
+    } else {
+      console.log("Job not found");
     }
   }, [id]);
 
@@ -50,12 +42,13 @@ const JobDetails: React.FC = () => {
     }
   };
 
-  if (!job)
+  if (!job) {
     return (
       <Center mt={20}>
         <Loader color="blue" />
       </Center>
     );
+  }
 
   return (
     <Center w={600} ml="auto" mr="auto">
