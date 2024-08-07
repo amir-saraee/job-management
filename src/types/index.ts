@@ -4,4 +4,6 @@ export interface Job {
   title: string;
   about: string;
   address: string;
+  imageSrc: string;
+  easyApply: boolean;
 }
